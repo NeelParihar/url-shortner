@@ -1,4 +1,4 @@
-import { Column, Entity, getRepository, PrimaryColumn, Repository } from 'typeorm'
+import { Column, Entity, getRepository, PrimaryColumn, Repository, CreateDateColumn,UpdateDateColumn } from 'typeorm'
 
 @Entity()
 export class ShortUrl {
@@ -10,6 +10,12 @@ export class ShortUrl {
 
     @Column({ type: 'int', default: 0 })
     clicks: number = 0
+
+    @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
+    public createdAt!: Date;
+
+    @UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" })
+    public updatedAt!: Date;
 }
 
 export function getShortUrlRepo(): Repository<ShortUrl> {
