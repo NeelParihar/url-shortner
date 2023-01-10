@@ -28,7 +28,7 @@ route.get('/:code/stats', async(req, res) => {
 
 route.post('/submit', async(req, res) => {
   const longUrl = req.body.url
-  console.log(">>>>>>",req.body)
+  
   const savedShortCode = await createRandomShortCode(longUrl)
 
   return res.status(201).json({
