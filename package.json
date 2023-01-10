@@ -8,7 +8,7 @@
     "build": "tsc",
     "prestart:dev": "npm run build",
     "start:dev": "cross-env NODE_ENV=development nodemon",
-    "start": "cross-env NODE_ENV=production node build/run.js",
+    "start": "cross-env NODE_ENV=production node -r dotenv/config build/run.js",
     "clean": "rimraf build",
     "lint": "eslint --ext .js,.ts,.jsx,.tsx .",
     "lint:fix": "eslint --fix --ext .js,.ts,.jsx,.tsx .",
@@ -19,6 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.17.1",
     "nanoid": "^3.3.4",
     "pg": "^8.6.0",
