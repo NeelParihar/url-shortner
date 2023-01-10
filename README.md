@@ -1,5 +1,5 @@
 # URL Shortner
-Backend for URL shortner 
+Backend for URL shortner written in typescript using Typeorm and Express.
 
 ## Development 
 
