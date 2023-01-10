@@ -22,18 +22,18 @@ route.get('/:code/stats', async(req, res) => {
 
   return res.status(200).json({
     status: 'success',
-    data: savedShortCode,
+    data: {...savedShortCode, shortUrl:process.env.HOST + '/' + savedShortCode.shortCode},
   })
 })
 
 route.post('/submit', async(req, res) => {
   const longUrl = req.body.url
-  
+
   const savedShortCode = await createRandomShortCode(longUrl)
 
   return res.status(201).json({
     status: 'success',
-    data: savedShortCode,
+    data: {...savedShortCode, shortUrl:process.env.HOST + '/' + savedShortCode.shortCode},
   })
 })
 

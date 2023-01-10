@@ -34,7 +34,6 @@ export async function createSpecificShortCode(shortCode: string, longUrl: string
   if(await getShortCodeDetails(shortCode)){
     throw new Error('ShortCode is already in use')
   }
-  console.log(newEntity)
 
   const savedEntity = await getShortUrlRepo().save(newEntity)
   return savedEntity
