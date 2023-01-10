@@ -4,7 +4,7 @@ var { customAlphabet } =  require('nanoid')
 const nanoid = customAlphabet('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 6)
 
 export async function getShortCodeDetails(shortCode: string): Promise<ShortUrl | undefined> {
-    const savedEntity = await getShortUrlRepo().findOne(shortCode, { select: ['shortCode', 'longUrl'] })
+    const savedEntity = await getShortUrlRepo().findOne(shortCode, { select: ['shortCode', 'longUrl', 'clicks', 'createdAt', 'updatedAt'] })
     return savedEntity
 }
 
@@ -24,7 +24,7 @@ export async function createSpecificShortCode(shortCode: string, longUrl: string
   const newEntity = new ShortUrl()
 
   // check if shortCode is less than 4 chars in length
-  if (shortCode.length <= 4) {
+  if (shortCode.length < 4) {
     throw new Error('ShortCode is too short')
   }
 

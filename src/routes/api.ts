@@ -37,7 +37,7 @@ route.post('/submit', async(req, res) => {
   })
 })
 
-route.put('/submit/:code', async(req, res) => {
+route.post('/submit/:code', async(req, res) => {
   const shortCode = req.params.code
   const longUrl = req.body.url
 
@@ -54,7 +54,7 @@ route.put('/submit/:code', async(req, res) => {
 
   return res.status(201).json({
     status: 'success',
-    data: savedShortCode,
+    data: {...savedShortCode, shortUrl:process.env.HOST + '/' + savedShortCode.shortCode},
   })
 })
 
